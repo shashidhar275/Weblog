@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const userRoute = require('./routes/user');
 const blogRoute = require('./routes/blog');
 const mongoose = require('mongoose');
@@ -10,7 +11,7 @@ const { checkForAuthenticationCookie } = require('./middlewares/authentication')
 
 const Blog = require('./models/blog');
 
-mongoose.connect('mongodb://localhost:27017/bolgVista')
+mongoose.connect(process.env.MONGO_URL)
 .then(e=>console.log('MongoDB connected'));
 
 app.use(express.static(path.resolve('./public')));
