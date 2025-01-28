@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 8000;
+const port = process.env.port || 8000;
 const userRoute = require('./routes/user');
 const blogRoute = require('./routes/blog');
 const mongoose = require('mongoose');
@@ -34,4 +34,4 @@ app.get('/',async (req,res)=>{
 app.use('/user',userRoute);
 app.use('/blog',blogRoute);
 
-app.listen(PORT,()=> console.log(`Server started at PORT${PORT}`));
+app.listen(port,()=> console.log(`Server started at port${port}`));
